@@ -1,16 +1,55 @@
 //
-//  PlayersViewController.swift
+//  TeamPickerViewController.swift
 //  Ratings
 //
-//  Created by Stanley Phu on 4/20/16.
+//  Created by Stanley Phu on 5/7/16.
 //  Copyright © 2016 Stanley Phu. All rights reserved.
 //
 
 import UIKit
 
-class PlayersViewController: UITableViewController {
+class TeamPickerViewController: UITableViewController {
     
-    var players:[Player] = playersData
+    var teams:[String] = [
+        "Atlanta Hawks",
+        "Boston Celtics",
+        "Brooklyn Nets",
+        "Charlotte Hornets",
+        "Chicago Bulls",
+        "Cleveland Cavaliers",
+        "Dallas Mavericks",
+        "Denver Nuggets",
+        "Detroit Pistons",
+        "Golden State Warriors",
+        "Houston Rockets",
+        "Indiana Pacers",
+        "Los Angeles Clippers",
+        "Los Angeles Lakers",
+        "Memphis Grizzlies",
+        "Miami Heat",
+        "Milwaukee Bucks",
+        "Minnesota Timberwolves",
+        "New Orleans Pelicans",
+        "New York Knicks",
+        "Oklahoma City Thunder",
+        "Orlando Magic",
+        "Philadelphia 76ers",
+        "Phoenix Suns",
+        "Portland Trail Blazers",
+        "Sacramento Kings",
+        "San Antonio Spurs",
+        "Toronto Raptors",
+        "Utah Jazz",
+        "Washington Wizards"]
+    
+    var selectedTeam:String? {
+        didSet {
+            if let team = selectedTeam {
+                selectedTeamIndex = teams.indexOf(team)!
+            }
+        }
+    }
+    var selectedTeamIndex:Int?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,25 +69,53 @@ class PlayersViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return players.count
+        return teams.count
     }
 
-    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("PlayerCell", forIndexPath: indexPath) as! PlayerCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("TeamCell", forIndexPath: indexPath)
+        cell.textLabel?.text = teams[indexPath.row]
+        
+        if indexPath.row == selectedTeamIndex {
+            cell.accessoryType = .Checkmark
+        }
+        else {
+            cell.accessoryType = .None
+        }
 
-        // Configure the cell...
-        let player = players[indexPath.row] as Player
-        cell.player = player
         return cell
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        //Other row is selected - need to deselect it
+        if let index = selectedTeamIndex {
+            let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: index, inSection: 0))
+            cell?.accessoryType = .None
+        }
+        
+        selectedTeam = teams[indexPath.row]
+        
+        //update the checkmark for the current row
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        cell?.accessoryType = .Checkmark
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "SaveSelectedTeam" {
+            if let cell = sender as? UITableViewCell {
+                let indexPath = tableView.indexPathForCell(cell)
+                if let index = indexPath?.row {
+                    selectedTeam = teams[index]
+                }
+            }
+        }
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -94,24 +161,5 @@ class PlayersViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    
-    @IBAction func cancelToPlayersViewController(segue:UIStoryboardSegue) {
-        
-    }
-    
-    @IBAction func savePlayerDetail(segue:UIStoryboardSegue) {
-        if let playerDetailsViewController = segue.sourceViewController as? PlayerDetailsViewController {
-            
-            //add the new player to the players array
-            if let player = playerDetailsViewController.player {
-                players.append(player)
-                
-                //update the tableView
-                let indexPath = NSIndexPath(forRow: players.count-1, inSection: 0)
-                tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
-            }
-        }
-    }
-
 
 }

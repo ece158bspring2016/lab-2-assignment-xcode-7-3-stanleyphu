@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B55758361CDD783200C457BB /* PlayerDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55758351CDD783200C457BB /* PlayerDetailsViewController.swift */; };
+		B56A549F1CDE9EBD00CEC4E5 /* TeamPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56A549E1CDE9EBD00CEC4E5 /* TeamPickerViewController.swift */; };
 		B5BBF9401CC87CD2008D77EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BBF93F1CC87CD2008D77EB /* AppDelegate.swift */; };
 		B5BBF9421CC87CD2008D77EB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BBF9411CC87CD2008D77EB /* ViewController.swift */; };
 		B5BBF9451CC87CD2008D77EB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5BBF9431CC87CD2008D77EB /* Main.storyboard */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B55758351CDD783200C457BB /* PlayerDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerDetailsViewController.swift; sourceTree = "<group>"; };
+		B56A549E1CDE9EBD00CEC4E5 /* TeamPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamPickerViewController.swift; sourceTree = "<group>"; };
 		B5BBF93C1CC87CD2008D77EB /* Ratings.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ratings.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5BBF93F1CC87CD2008D77EB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5BBF9411CC87CD2008D77EB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -65,6 +69,8 @@
 				B5BBF93F1CC87CD2008D77EB /* AppDelegate.swift */,
 				B5BBF9411CC87CD2008D77EB /* ViewController.swift */,
 				B5BBF9431CC87CD2008D77EB /* Main.storyboard */,
+				B56A549E1CDE9EBD00CEC4E5 /* TeamPickerViewController.swift */,
+				B55758351CDD783200C457BB /* PlayerDetailsViewController.swift */,
 				B5BBF9571CC8C350008D77EB /* PlayerCell.swift */,
 				B5BBF9531CC88C2D008D77EB /* Player.swift */,
 				B5BBF9551CC88F07008D77EB /* SampleData.swift */,
@@ -150,7 +156,9 @@
 				B5BBF9581CC8C350008D77EB /* PlayerCell.swift in Sources */,
 				B5BBF9421CC87CD2008D77EB /* ViewController.swift in Sources */,
 				B5BBF9401CC87CD2008D77EB /* AppDelegate.swift in Sources */,
+				B55758361CDD783200C457BB /* PlayerDetailsViewController.swift in Sources */,
 				B5BBF9541CC88C2D008D77EB /* Player.swift in Sources */,
+				B56A549F1CDE9EBD00CEC4E5 /* TeamPickerViewController.swift in Sources */,
 				B5BBF9561CC88F07008D77EB /* SampleData.swift in Sources */,
 				B5BBF9521CC88B7E008D77EB /* PlayersViewController.swift in Sources */,
 			);
@@ -302,6 +310,7 @@
 				B5BBF9501CC87CD2008D77EB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

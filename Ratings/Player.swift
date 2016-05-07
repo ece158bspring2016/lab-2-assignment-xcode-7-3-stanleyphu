@@ -1,5 +1,5 @@
 //
-//  Car.swift
+//  Player.swift
 //  Ratings
 //
 //  Created by Stanley Phu on 4/20/16.
